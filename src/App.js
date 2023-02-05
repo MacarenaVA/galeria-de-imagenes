@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import imgs from "./imgs.json"
+import Header from "./Header.jsx"
+import Card from "./Card.jsx"
+import Footer from "./Footer"
+import { Row } from "react-bootstrap"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Row
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {imgs.map((obj, k) => (
+          <Card
+            key={k}
+            url={obj.url + "?w=200"}
+            title={obj.title}
+            description={obj.description}
+          />
+        ))}
+      </Row>
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
